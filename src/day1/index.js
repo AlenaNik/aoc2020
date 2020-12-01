@@ -38,7 +38,18 @@ const goA = (input) => {
 
 const goB = (input) => {
   let result = 0;
-  return result
+  let myExpenses = numbers(input)
+    myExpenses.forEach(first => {
+        myExpenses.forEach(second => {
+            myExpenses.forEach(third => {
+                if (sum([first, second, third]) === 2020) {
+                    result = multiply([first, second, third]);
+                    console.log(result)
+                }
+            })
+        })
+    })
+    return result
 }
 
 /* Tests */
