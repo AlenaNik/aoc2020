@@ -4,12 +4,41 @@ const prepareInput = (rawInput) => rawInput
 
 const input = prepareInput(readInput())
 
+// utils
+// get arr o nums
+const numbers = (arr) => arr.split("\n").map(function(item) {
+    return +item
+});
+// fancy sum items in the arr
+let sum = (arr) => {
+   return arr.reduce(function (a, b) {
+        return a + b
+    }, 0);
+};
+// fancy multiply
+let multiply = (arr) => {
+   return arr.reduce(function (a, b) {
+        return a * b
+    }, 1);
+};
+
+
 const goA = (input) => {
-  return
+  let result = 0;
+  let myExpenses = numbers(input)
+  myExpenses.forEach(first => {
+      myExpenses.forEach(second => {
+          if (first + second === 2020) {
+              result = multiply([first, second]);
+          }
+      })
+  })
+    return result;
 }
 
 const goB = (input) => {
-  return
+  let result = 0;
+  return result
 }
 
 /* Tests */
