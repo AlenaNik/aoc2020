@@ -5,7 +5,7 @@ const prepareInput = (rawInput) => rawInput
 const input = prepareInput(readInput())
 
 // utils
-// get arr o nums
+// get arr of nums
 const numbers = (arr) => arr.split("\n").map(function(item) {
     return +item
 });
@@ -41,10 +41,9 @@ const goB = (input) => {
   let myExpenses = numbers(input)
     myExpenses.forEach(first => {
         myExpenses.forEach(second => {
-            myExpenses.forEach(third => {
-                if (sum([first, second, third]) === 2020) {
+            myExpenses.forEach((third) => {
+                if (sum([first, second, third]) === 2020 && !result) {
                     result = multiply([first, second, third]);
-                    console.log(result)
                 }
             })
         })
