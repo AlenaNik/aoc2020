@@ -5,11 +5,31 @@ const prepareInput = (rawInput) => rawInput
 const input = prepareInput(readInput())
 
 const goA = (input) => {
-  return
+  let result = input.split('\n').filter(row => {
+    let splitRow = row.split(' ')
+    const [min, max] = splitRow[0].split('-')
+    const char = splitRow[1]
+    const password = splitRow[2]
+    const letter = char && char.replace(/.$/,'')
+    const values = password && password.split('').filter(function (value) {
+      return value === letter
+    }).length
+    return values >= min && values <= max
+  });
+  return result.length
 }
 
 const goB = (input) => {
-  return
+  let result = input.split('\n').filter(row => {
+    let splitRow = row.split(' ')
+    const [firstChar, secondChar] = splitRow[0].split('-')
+    const char = splitRow[1]
+    const letter = char && char.replace(/.$/,'')
+    const password = splitRow[2]
+    const letters = password && password.split('');
+    return ((letters && letters[firstChar] !== letter) + (letters && letters[secondChar - 1] === letter)) === 1;
+  })
+  return result.length
 }
 
 /* Tests */
