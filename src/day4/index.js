@@ -5,10 +5,12 @@ const prepareInput = (rawInput) => rawInput
 const input = prepareInput(readInput())
 
 // fancy  functions
-const data = (arr) => arr.split('\n\n').map(item => {
-  let rows = item.split(' ')
-  return rows.map(value => value.split(':')[0])
-})
+const data = (arr) => {
+  return arr.split('\n\n').map(item => {
+    const keys = item.replace(/\n/g, ' ').split(' ')
+    return keys.map(value => value.split(':')[0])
+  })
+}
 
 let sum = (arr) => {
   return arr.reduce(function (a, b) {
@@ -30,7 +32,7 @@ const goA = (input) => {
   return data(input).filter(row => {
     //console.log(data(input))
     return batch.every(code => {
-      return row.includes(code) && row.length === 7;
+      return row.includes(code);
     })
   }).length
 }
