@@ -4,7 +4,7 @@ const prepareInput = (rawInput) => rawInput
 
 const input = prepareInput(readInput())
 
-// fancy unredable functions
+// fancy functions
 // multiply for step 2
 let multiply = (arr) => {
   return arr.reduce(function (a, b) {
@@ -28,13 +28,13 @@ const goA = (input, step1, step2, char) => {
 }
 
 const goB = (input, step1, step2, char) => {
-  const one = counter(data(input), 1, 1, char);
-  const two = counter(data(input), 3, 1, char);
-  const three = counter(data(input), 5, 1, char);
-  const four = counter(data(input), 7, 1, char);
-  const five = counter(data(input), 1, 2, char);
+  const one = counter(data(input), 1, 1, char)
+  const two = counter(data(input), 3, 1, char)
+  const three = counter(data(input), 5, 1, char)
+  const four = counter(data(input), 7, 1, char)
+  const five = counter(data(input), 1, 2, char)
   // 6818112000
-  return multiply([one, two, three, four, five]);
+  return multiply([one, two, three, four, five])
 }
 
 /* Tests */

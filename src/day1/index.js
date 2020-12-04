@@ -13,13 +13,13 @@ const numbers = (arr) => arr.split("\n").map(function(item) {
 let sum = (arr) => {
    return arr.reduce(function (a, b) {
         return a + b
-    }, 0);
+    }, 0)
 };
 // fancy multiply
 let multiply = (arr) => {
    return arr.reduce(function (a, b) {
         return a * b
-    }, 1);
+    }, 1)
 };
 
 
@@ -29,11 +29,11 @@ const goA = (input) => {
   myExpenses.forEach(first => {
       myExpenses.forEach(second => {
           if (first + second === 2020) {
-              result = multiply([first, second]);
+              result = multiply([first, second])
           }
       })
   })
-    return result;
+    return result
 }
 
 const goB = (input) => {
@@ -43,7 +43,7 @@ const goB = (input) => {
         myExpenses.forEach(second => {
             myExpenses.forEach((third) => {
                 if (sum([first, second, third]) === 2020 && !result) {
-                    result = multiply([first, second, third]);
+                    result = multiply([first, second, third])
                 }
             })
         })
