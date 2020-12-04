@@ -5,18 +5,19 @@ const prepareInput = (rawInput) => rawInput
 const input = prepareInput(readInput())
 
 // fancy  functions
-const data = (arr) => {
+const data1 = (arr) => {
   return arr.split('\n\n').map(item => {
     const keys = item.replace(/\n/g, ' ').split(' ')
     return keys.map(value => value.split(':')[0])
   })
 }
 
-let sum = (arr) => {
-  return arr.reduce(function (a, b) {
-    return a + b
-  }, 0)
-};
+const data2 = (arr) => {
+  return arr.split('\n\n').map(item => {
+    const keys = item.replace(/\n/g, ' ').split(' ')
+    return keys.map(value => value.split(':')[0])
+  })
+}
 
 const batch = [
   'byr',
@@ -29,17 +30,26 @@ const batch = [
 ]
 
 const goA = (input) => {
-  return data(input).filter(row => {
-    //console.log(data(input))
+  return data1(input).filter(row => {
     return batch.every(code => {
       return row.includes(code);
     })
   }).length
 }
-// 19
 
 const goB = (input) => {
-  return
+  const validations = [
+    'byr', // 4 digits value >= 1920 && value <= 2002
+    'iyr', // 4 digits value >= 2010 && value <= 2020
+    'eyr', // 4 digits value >= 2020 && value <= 2030
+    'hgt', // if cm value >= 150 && value <= 193 if in value >= 59 && value <= 76
+    'hcl', // value.match(/#[0-9a-f]{6}/)
+    'ecl', // one of (amb blu brn gry grn hzl oth)
+    'pid', // 9 numbers value.match(/^\d{9}$/)
+  ]
+  return data2(input).filter(row => {
+    console.log(row)
+  }).length
 }
 
 /* Tests */
