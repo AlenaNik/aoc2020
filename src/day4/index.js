@@ -13,10 +13,7 @@ const data1 = (arr) => {
 }
 
 const data2 = (arr) => {
-  return arr.split('\n\n').map(item => {
-    const keys = item.replace(/\n/g, ' ').split(' ')
-    return keys.map(value => value.split(':')[0])
-  })
+  return arr.split('\n\n')
 }
 
 const batch = [
@@ -38,17 +35,30 @@ const goA = (input) => {
 }
 
 const goB = (input) => {
+  let passports = input.split('\n\n')
+
   const validations = [
-    'byr', // 4 digits value >= 1920 && value <= 2002
-    'iyr', // 4 digits value >= 2010 && value <= 2020
-    'eyr', // 4 digits value >= 2020 && value <= 2030
-    'hgt', // if cm value >= 150 && value <= 193 if in value >= 59 && value <= 76
-    'hcl', // value.match(/#[0-9a-f]{6}/)
-    'ecl', // one of (amb blu brn gry grn hzl oth)
-    'pid', // 9 numbers value.match(/^\d{9}$/)
+    ['byr', (value) => value >= 1920 && value <= 2002],
+    ['iyr', (value) => value >= 2010 && value <= 2020],
+    ['eyr', (value) => value >= 2020 && value <= 2030],
+    ['hgt', (value) => {
+    // value.slice(0, -2)
+    // if cm value >= 150 && value <= 193 if in value >= 59 && value <= 76
+    }],
+    ['hcl',(value) => /#[0-9a-f]{6}/.test(value)],
+    ['ecl',(value) => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].some(code => code === value)],
+    ['pid',(value) => /^\d{9}$/.test(value)]
   ]
-  return data2(input).filter(row => {
-    console.log(row)
+
+
+  return passports.filter(passport => {
+    const arrayPass = passport.split('\n').join(' ').split(' ')
+    const fields = arrayPass.map(i => i.split(':')[0])
+
+    const success = arrayPass.every(pass => {
+      const [code, val] = pass.split(':')
+      console.log(code, val)
+    })
   }).length
 }
 
