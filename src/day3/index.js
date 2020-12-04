@@ -14,7 +14,7 @@ let multiply = (arr) => {
 // data
 const data = (arr) => arr.split("\n")
 // movement pattern
-const counter = (someMap, right, down, tree) => {
+const treeCounter1 = (someMap, right, down, tree) => {
   let position = 0;
   return someMap.filter(function(row, index) {
     if (index % down === 0) {
@@ -25,13 +25,13 @@ const counter = (someMap, right, down, tree) => {
 }
 
 
-const treeCounter = (someMap, right, down, tree) => {
+const treeCounter2 = (someMap, right, down, tree) => {
   let count = 0;
   let position = 0;
   // 6818112000
   someMap.forEach((row, index) => {
-    if (index === 0 || index % down !== 0) return;
-    position = (position + right) % (row.length);
+    if (index === 0 || index % down !== 0) return count;
+    position = (position + right) % row.length;
     if (row[position] === tree) {
       count++
     }
@@ -41,15 +41,15 @@ const treeCounter = (someMap, right, down, tree) => {
 
 const goA = (input, step1, step2, char) => {
   // 228
-  return counter(data(input), step1, step2, char)
+  return treeCounter1(data(input), step1, step2, char)
 }
 
 const goB = (input, step1, step2, char) => {
-  const one = treeCounter(data(input), 1, 1, char);
-  const two = treeCounter(data(input), 3, 1, char);
-  const three = treeCounter(data(input), 5, 1, char);
-  const four = treeCounter(data(input), 7, 1, char);
-  const five = treeCounter(data(input), 1, 2, char);
+  const one = treeCounter2(data(input), 1, 1, char);
+  const two = treeCounter2(data(input), 3, 1, char);
+  const three = treeCounter2(data(input), 5, 1, char);
+  const four = treeCounter2(data(input), 7, 1, char);
+  const five = treeCounter2(data(input), 1, 2, char);
   // 6818112000
   return multiply([one, two, three, four, five]);
 }
