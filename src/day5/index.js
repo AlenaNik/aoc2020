@@ -4,8 +4,12 @@ const prepareInput = (rawInput) => rawInput
 
 const input = prepareInput(readInput())
 
+const rows = (arr) => arr.split("\n").map(function(item) {
+  return item
+});
+
 const goA = (input) => {
-  return
+  return rows(input)
 }
 
 const goB = (input) => {
